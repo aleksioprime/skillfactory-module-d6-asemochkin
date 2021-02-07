@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block extra_content %}
+{% load static %}
+<h2>Cписок авторов</h2>
+<table class="table-book">
+    <thead>
+        <tr>
+            <th scope="col">№</th>
+            <th scope="col">ФИО</th>
+            <th scope="col">Год рождения</th>
+            <th scope="col">Страна</th>
+            <th scope="col">Книги</th>
+        </tr>
+    </thead>
+    {% for author in authors %}
+    <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ author.full_name }}</td>
+        <td>{{ author.birth_year }}</td>
+        <td>{{ author.country }}</td>
+        <td>
+            <ul class="related-books">
+                {% for book in author.book_author.all %}
+                <li > {{book.title}} </li>
+                {% endfor %}
+            </ul>
+        </td>
+        <td><a href="{% url 'home_library:author_edit' author.pk %}">
+            <img src="{% static 'img/pencil.svg' %}" alt="" width="25px" height="auto">
+        </a></td>
+        <td><a href="{% url 'home_library:author_delete' author.pk %}">
+            <img src="{% static 'img/remove.svg' %}" alt="" width="25px" height="auto">
+        </a></td>
+    </tr>
+    {% endfor %}
+</table>
+<a class="link-create" href="{% url 'home_library:author_add'%}">Добавить автора</a>
+{% endblock %}

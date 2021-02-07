@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Домашняя библиотека</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>Домашняя библиотека</h1>
+        </header>
+        <aside>
+            <ul class="menu">
+                <li><a href="{% url 'home_library:index' %}">Список книг</a></li>
+                <li><a href="{% url 'home_library:authors' %}">Список авторов</a></li>
+                <li><a href="{% url 'home_library:publishers' %}">Список издательств</a></li>
+                <li><a href="{% url 'home_library:friends' %}">Список друзей</a></li>
+            </ul>
+        </aside>
+        <main>
+            {% block extra_content %}
+
+            {% endblock %}
+        </main>
+        <footer>
+            <p>&copy; Алексей С. - 2021 | SkillFactory | Домашнее задание - D6</p>
+            <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a
+                            href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        </footer>
+    </div>
+</body>
+
+</html>
